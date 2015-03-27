@@ -33,6 +33,9 @@ public class CardServiceImpl implements CardService {
     public List<Item> getItems(String catName, int minDiff, int maxDiff) {
 
         Category cat=catDao.findByname(catName);
+        if(cat==null ){
+            System.out.println("cat");
+        }
         List<Item> allInCat=(List<Item>) cat.getItems();
         List<Item> allDiff=(List<Item>)itemDao.findByDiff(minDiff, maxDiff);
         if(allInCat.size()==0 ){
@@ -41,7 +44,7 @@ public class CardServiceImpl implements CardService {
         if(allDiff.size()==0 ){
             System.out.println("ALLINdiff");
         }
-        allInCat.retainAll(allDiff);
+        //allInCat.retainAll(allDiff);
 
         return allInCat;
     }
