@@ -10,9 +10,7 @@ import fr.rennes.na.guess.model.entity.Item;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by herrard on 27/03/15.
@@ -32,7 +30,7 @@ public class CardServiceImpl implements CardService {
     @Override
     public List<Item> getItems(String catName, int minDiff, int maxDiff) {
 
-        Category cat=catDao.findByname(catName);
+        /*Category cat=catDao.findByname(catName);
         if(cat==null ){
             System.out.println("cat");
         }
@@ -46,7 +44,11 @@ public class CardServiceImpl implements CardService {
         }
         //allInCat.retainAll(allDiff);
 
-        return allInCat;
+        return allInCat;*/
+
+        List<Item> res=(List<Item>) itemDao.findByCatAndDiff(catName, minDiff, maxDiff);
+
+        return res;
     }
 
     @Override
@@ -101,5 +103,11 @@ public class CardServiceImpl implements CardService {
             item.setCateBelong(category);
             itemDao.save(item);
         }
+    }
+
+    @Override
+    public List<Item> getAllItemOfCate(String cat) {
+         List<Item> res=(List<Item>)itemDao.findByCat(cat);
+         return res;
     }
 }

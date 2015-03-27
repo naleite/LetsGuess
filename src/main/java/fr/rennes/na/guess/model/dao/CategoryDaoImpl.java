@@ -1,11 +1,10 @@
 package fr.rennes.na.guess.model.dao;
 
 import fr.rennes.na.guess.model.entity.Category;
-import fr.rennes.na.guess.model.entity.Item;
 
-import javax.persistence.Query;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import java.util.Collection;
 import java.util.List;
 
@@ -96,8 +95,5 @@ public class CategoryDaoImpl implements CategoryDao {
         this.tx = tx;
     }
 
-    @Override
-    public List<Item> findAllItemInCat(String cat) {
-        return null;
-    }
+
 }

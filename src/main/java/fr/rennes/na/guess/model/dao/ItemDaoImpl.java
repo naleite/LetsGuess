@@ -1,8 +1,6 @@
 package fr.rennes.na.guess.model.dao;
 
-import fr.rennes.na.guess.model.entity.Category;
 import fr.rennes.na.guess.model.entity.Item;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -93,9 +91,33 @@ public class ItemDaoImpl implements ItemDao {
     }
 
     @Override
-    public Collection<Item> findByCat(Category cat) {
+    public Collection<Item> findByCat(String cat) {
 
-        throw new NotImplementedException();
+        Query q=em.createQuery("SELECT item FROM Item AS item " +
+                                "WHERE item.cateBelong.cname = :cname");
+        q.setParameter("cname",cat);
+        List<Item> res=q.getResultList();
+        if(res.size()==0){
+            return null;
+        }
+        return res;
+
+    }
+
+    @Override
+    public Collection<Item> findByCatAndDiff(String cat, int minDiff, int maxDiff) {
+        Query q=em.createQuery("SELECT item FROM Item AS item " +
+                                "WHERE item.difficulty >= :min " +
+                                "AND item.difficulty <= :max " +
+                                "AND item.cateBelong.cname = :cname ");
+        q.setParameter("min",minDiff);
+        q.setParameter("max",maxDiff);
+        q.setParameter("cname",cat);
+        List<Item> res=q.getResultList();
+        if(res.size()==0){
+            return null;
+        }
+        return res;
     }
 
     public EntityManager getEm() {
