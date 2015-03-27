@@ -35,6 +35,12 @@ public class CardServiceImpl implements CardService {
         Category cat=catDao.findByname(catName);
         List<Item> allInCat=(List<Item>) cat.getItems();
         List<Item> allDiff=(List<Item>)itemDao.findByDiff(minDiff, maxDiff);
+        if(allInCat.size()==0 ){
+            System.out.println("ALLINCAT");
+        }
+        if(allDiff.size()==0 ){
+            System.out.println("ALLINdiff");
+        }
         allInCat.retainAll(allDiff);
 
         return allInCat;

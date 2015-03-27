@@ -2,6 +2,7 @@ package fr.rennes.na.guess.model.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -14,7 +15,7 @@ public class Category implements Serializable{
 
     private long id;
     private String cname;
-    private Collection<Item> items;
+    private Collection<Item> items=new ArrayList<>();
 
     @Id
     @GeneratedValue
