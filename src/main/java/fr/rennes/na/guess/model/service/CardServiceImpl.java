@@ -45,10 +45,26 @@ public class CardServiceImpl implements CardService {
         Item item=new Item();
         item.setContent(word);
         item.setDifficulty(1);
-        Category cat=new Category();
+       /* Category cat=new Category();
         cat.setCname(catName);
         item.setCateBelong(cat);
-        itemDao.save(item);
+        catDao.save(cat);
+        itemDao.save(item);*/
+        Category category=catDao.findByname(catName);
+        if(category==null){
+
+            Category cat=new Category();
+            cat.setCname(catName);
+            item.setCateBelong(cat);
+            catDao.save(cat);
+            itemDao.save(item);
+        }
+        else{
+            item.setCateBelong(category);
+            itemDao.save(item);
+        }
+
+
 
     }
 
@@ -57,9 +73,24 @@ public class CardServiceImpl implements CardService {
         Item item=new Item();
         item.setContent(word);
         item.setDifficulty(diff);
-        Category cat=new Category();
+
+        /*Category cat=new Category();
         cat.setCname(catName);
         item.setCateBelong(cat);
-        itemDao.save(item);
+        catDao.save(cat);
+        itemDao.save(item);*/
+        Category category=catDao.findByname(catName);
+        if(category==null){
+
+            Category cat=new Category();
+            cat.setCname(catName);
+            item.setCateBelong(cat);
+            catDao.save(cat);
+            itemDao.save(item);
+        }
+        else{
+            item.setCateBelong(category);
+            itemDao.save(item);
+        }
     }
 }

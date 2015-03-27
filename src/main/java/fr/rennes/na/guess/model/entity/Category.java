@@ -1,9 +1,6 @@
 package fr.rennes.na.guess.model.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -12,6 +9,7 @@ import java.util.Collection;
  */
 
 @Entity
+@Table(uniqueConstraints=@UniqueConstraint(columnNames="cname"))
 public class Category implements Serializable{
 
     private long id;
@@ -28,6 +26,7 @@ public class Category implements Serializable{
         this.id = id;
     }
 
+    @Column(unique=true, nullable=false)
     public String getCname() {
 
         return cname;
