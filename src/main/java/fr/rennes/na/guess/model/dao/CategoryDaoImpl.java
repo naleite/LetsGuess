@@ -1,4 +1,4 @@
-package fr.rennes.na.guess.dao;
+package fr.rennes.na.guess.model.dao;
 
 import fr.rennes.na.guess.model.entity.Category;
 

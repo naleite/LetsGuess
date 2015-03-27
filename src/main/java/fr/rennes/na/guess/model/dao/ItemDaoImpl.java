@@ -1,4 +1,4 @@
-package fr.rennes.na.guess.dao;
+package fr.rennes.na.guess.model.dao;
 
 import fr.rennes.na.guess.model.entity.Category;
 import fr.rennes.na.guess.model.entity.Item;
@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by herrard on 27/03/15.
  */
-public class ItemDaoImpl implements ItemDAO {
+public class ItemDaoImpl implements ItemDao {
 
     private EntityManager em;
     private EntityTransaction tx;
@@ -77,6 +77,16 @@ public class ItemDaoImpl implements ItemDAO {
         q.setParameter("max",maxDiff);
         List<Item> res=q.getResultList();
         return res;
+    }
+
+    @Override
+    public Collection<Item> findByCat(Category cat) {
+
+
+
+
+
+        return null;
     }
 
     public EntityManager getEm() {

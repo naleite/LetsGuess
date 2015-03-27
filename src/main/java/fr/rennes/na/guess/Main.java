@@ -15,7 +15,7 @@ public class Main extends Application {
 
 
         FXMLLoader loader=new FXMLLoader();
-        Parent root = loader.load(getClass().getClassLoader().getResource("main.fxml"));
+        Parent root = loader.load(getClass().getClassLoader().getResource("start.fxml"));
 
 
         primaryStage.setTitle("Let's Guess");
